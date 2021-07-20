@@ -1,3 +1,0 @@
-Nombre: Ali
-Telefono: 56464646464
-Categoría: cliente
