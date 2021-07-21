@@ -27,10 +27,10 @@ def app():
             edit_contact()
             ask = False
         elif option == 3:
-            print('ver')
+            show_contact()
             ask = False
         elif option == 4: 
-            print('buscar')
+            search_contact()
             ask = False
         elif option == 5: 
             print('eliminar')
@@ -70,14 +70,33 @@ def edit_contact():
             write_file(contact, file)
             print('editado correctamente')
 
-            #rename file
+            #renombrar archivo
             os.rename(FILE + existing_name + EXTENSION, FILE + name_contact + EXTENSION )
     else:
         print('contacto no encontrado, inténtelo de nuevo o cree uno')
-        app()#reiniciar app
+        app()
 
+def show_contact():
+    print('mostrando contactos')
+    files = os.listdir(FILE)
+    print(files)
+    for file in files:
+        with open(FILE + file) as contact:
+            for line in contact:
+                print(line.rstrip()) 
+            print('\r\n') #separador
+    
+    app()
 
-  
+def search_contact():
+    contact_searched = input('Introduzca el nombre del contacto que busca: ')
+    with open(FILE + contact_searched + EXTENSION) as contact:
+            for line in contact:
+                print('\r\n') #separador
+                print(line.rstrip()) 
+            print('\r\n') #separador
+    app()
+
 def create_directory():
     if not os.path.exists('contacts/'):
         #create file
@@ -97,11 +116,8 @@ def existing_contact(name_contact):
         return True 
 
 def write_file(contact, file):
-#escribir archivo
     file.write('Nombre: '+ contact.name+ '\r\n')
     file.write('Telefono: ' + contact.phone+ '\r\n')
     file.write('Categoría: ' + contact.category + '\r\n')
-
-
 
 app()
