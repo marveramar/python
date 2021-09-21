@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Single Project Template</h1>
+<img src="{% static 'images/450_1000.jpg' %}"
+<h4>{{project.title}}</h4>
+<br>
+{% for tag in tags %}
+<p>TAG</p>
+<p>---------------------------------</p>
+<p>{{tag}}</p>
+<p>---------------------------------</p>
+{% endfor %}
+<p>{{project.description}}</p>
+
+{% endblock content %}
