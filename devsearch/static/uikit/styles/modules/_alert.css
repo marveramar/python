@@ -16,6 +16,8 @@
   color: var(--color-main);
   font-size: 1.4rem;
   font-weight: var(--font-medium);
+  z-index: 1000;
+  position: relative;
 }
 
 .alert.alert--error,
