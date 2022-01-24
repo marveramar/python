@@ -136,5 +136,3 @@ def deleteSkill(request, pk):
 
 	context = {'object': skill}
 	return render(request, 'projects/delete_object.html', context)
-
-

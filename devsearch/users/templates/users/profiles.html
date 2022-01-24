@@ -10,7 +10,7 @@
 			  <h2>FROM AROUND THE WORLD</h2>
 			</div>
 			<div class="hero-section__search">
-			  <form class="form" action="#" method="get">
+			  <form class="form" action="{% url 'profiles' %}" method="get" d="searchForm">
 				<div class="form__field">
 				  <label for="formInput#search">Search Developers </label>
 				  <input class="input input--text" id="formInput#search" type="text" name="text"
@@ -52,5 +52,6 @@
 			</div>
 		  </div>
 		</section>
+		{% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
 	</main>	
 {% endblock %}
