@@ -16,8 +16,9 @@ def projects(request):
     return render(request, 'projects/projects.html', context)
 
 
-def project(request, pk):
-    projectObj = Project.objects.get(id=pk)
+def singleproject(request, pk):
+    projectObj = Project.objects.get(id = pk)
+    tags = projectObj.tags.all()
     form = ReviewForm()
 
     if request.method == 'POST':
@@ -27,16 +28,9 @@ def project(request, pk):
         review.owner = request.user.profile
         review.save()
 
-        projectObj.getVoteCount
-
         messages.success(request, 'Your review was successfully submitted!')
-        return redirect('project', pk=projectObj.id)
-
-    return render(request, 'projects/single-project.html', {'project': projectObj, 'form': form})
-def singleproject(request, pk):
-    projectObj = Project.objects.get(id = pk)
-    tags = projectObj.tags.all()
-    return render(request, 'projects/singleproject.html', {'project':projectObj, 'tags': tags})
+        return redirect('singleproject', pk=projectObj.id)
+    return render(request, 'projects/singleproject.html', {'project':projectObj, 'tags': tags, 'form':form})
 
 @login_required(login_url="login")
 def createProject(request):
