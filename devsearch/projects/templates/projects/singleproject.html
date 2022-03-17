@@ -36,7 +36,7 @@
             <h5 class="project--rating">
              Postitive Feedback {{project.vote_total}} vote{{project.vote_total|pluralize:"s"}}
             </h5>
-
+			<p>Please login to give a review</p>
             <form class="form" action="{% url 'singleproject' project.id %}" method="POST">
 				{% csrf_token %}
 				{% for field in form %}
