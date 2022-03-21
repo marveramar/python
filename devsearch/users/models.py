@@ -3,8 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 
-from django.forms import BooleanField
-
 # Create your models here.
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -54,3 +52,4 @@ class Message(models.Model):
 
 	class Meta:
 		ordering =['is_read', '-created']
+	
